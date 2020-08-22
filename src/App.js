@@ -1,18 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const naioks = ['anowar', 'salman', 'jafar']
+  const naioks = ['anowar','salman','jafarrrrrrr']
   const products= [
     {name: 'Shorisha Tel', price:'$9.99'},
     {name:'modhu', price: '$1000'},
+    {name:'ghee', price:'$1600'},
+    {name:'ghee', price:'$1600'},
     {name:'ghee', price:'$1600'}
 ]
   return (
     <div className="App">
       <header className="App-header">
        <p>I am react person kk</p>
+       <Counter></Counter>
+       <ul>
+       {
+         naioks.map(naiok => <li>{naiok}</li>)
+       }
+       {
+         products.map(product=> <li>{product.name}</li>)
+       }
+       </ul>
+       {
+         products.map(product=> <Product product={product}></Product>)
+       }
        <Product product={products[0]}></Product>
        <Product product={products[1]}></Product>
        <Person name='hanif' nika='rahima'></Person>
@@ -20,6 +34,20 @@ function App() {
       </header>
     </div>
   );
+}
+
+function Counter(props) {
+  const[count, setCount] = useState(0);
+  //const handleIncrease = () => setCount(count+1);
+
+  return(
+    <div>
+    <h1>Count: {count} </h1>
+    <button onClick={() => setCount(count+1)}>Increase</button>
+    <button onClick={() => setCount(count - 1)}>Decrease</button>
+    <button onClick={() => setCount(count==0)}>Clear</button>
+    </div>
+  )
 }
 
 function Product(props) {
